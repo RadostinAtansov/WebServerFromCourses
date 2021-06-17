@@ -1,0 +1,12 @@
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\bin\Debug\net5.0\MyServer.deps.json
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\bin\Debug\net5.0\MyServer.dll
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\bin\Debug\net5.0\ref\MyServer.dll
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\bin\Debug\net5.0\MyServer.pdb
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.AssemblyInfoInputs.cache
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.AssemblyInfo.cs
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.csproj.CoreCompileInputs.cache
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.dll
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\ref\MyServer.dll
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.pdb
+C:\Users\hapa_\source\repos\WebServerFromCourses\MyServer\obj\Debug\net5.0\MyServer.csproj.AssemblyReference.cache
