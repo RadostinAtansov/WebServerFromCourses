@@ -3,16 +3,18 @@
     using MyServer;
     using System.Threading.Tasks;
     using WebServerFromCourses.Controller;
+    using MyServer.Controllers;
 
     public class StartUp
     {
         public static async Task Main()
            =>  await new HttpServer(routtes => routtes
-                .MapGet<HomeController>("/", c => c.Index())
-               .MapGet("/", request => new HomeController(request).Index())
-               .MapGet("/Cats", request => new AnimalsController(request).Cats())
-               .MapGet("/Dogs",request =>  new AnimalsController(request).Dogs()))
-            .Start();
+               .MapGet<HomeController>("/", c => c.Index())
+               .MapGet<HomeController>("/ToCats", c => c.LocalRedirect())
+               .MapGet<HomeController>("/Softuni", c => c.ToSoftUni())
+               .MapGet<AnimalsController>("/Cats", c => c.Cats())
+               .MapGet<AnimalsController>("/Dog", c => c.Dogs())
+           ).Start();
         
     }
 }

@@ -73,7 +73,7 @@ namespace MyServer.Http
 
         private static HttpMethod ParseHttpMethod(string method)
         {
-
+            
             return method.ToUpper() switch
             {
                 "GET" => HttpMethod.Get,
@@ -90,11 +90,12 @@ namespace MyServer.Http
 
             foreach (var headerLine in headerLines)
             {
+
                 if (headerLine == string.Empty)
                 {
                     break;
                 }
-                    
+
                 var headerParts = headerLine.Split(":", 2);
 
                 if (headerParts.Length != 2)

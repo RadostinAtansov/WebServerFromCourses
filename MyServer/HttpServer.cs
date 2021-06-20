@@ -48,7 +48,9 @@ namespace MyServer
             Console.WriteLine($"Server started on port {port}...");
             Console.WriteLine($"Listening for request...");
 
-            do
+       
+
+            while (true)
             {
                 var conection = await this.listener.AcceptTcpClientAsync();
 
@@ -68,8 +70,7 @@ namespace MyServer
                 await WriteResponse(networkStrem, response);
 
                 conection.Close();
-
-            } while (true);
+            }
         }
 
         private async Task<string> ReadRequest(NetworkStream networkStream)

@@ -37,7 +37,7 @@ namespace MyServer.Routing
             Guard.AgainstNull(path, nameof(path));
             Guard.AgainstNull(resposeFunction, nameof(resposeFunction));
 
-            this.routes[HttpMethod.Get][path] = resposeFunction;
+            this.routes[HttpMethod.Get][path.ToLower()] = resposeFunction;
 
             return this;
         }
@@ -65,7 +65,7 @@ namespace MyServer.Routing
         {
 
             var requestMethod = request.Method;
-            var requestUrl = request.Path;
+            var requestUrl = request.Path.ToLower();
 
             if (!this.routes.ContainsKey(requestMethod)
                 || !this.routes[requestMethod].ContainsKey(requestUrl))

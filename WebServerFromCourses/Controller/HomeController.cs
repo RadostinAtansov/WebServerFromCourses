@@ -3,6 +3,8 @@
     using MyServer;
     using MyServer.Http;
     using MyServer.Responses;
+    using MyServer.Controllers;
+
 
     public class HomeController : ControllerHandMade
     {
@@ -16,6 +18,9 @@
         public HttpResponse Index()
             =>  Text("Hello from Radul");
 
+        public HttpResponse LocalRedirect() => Redirect("Cats");
+
+        public HttpResponse ToSoftUni() => Redirect("https://softuni.bg");
 
     }
 }
