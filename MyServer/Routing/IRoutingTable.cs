@@ -13,6 +13,14 @@ namespace MyServer.Routing
     {
         IRoutingTable Map(HttpMethod method, string path, HttpResponse respose);
 
+        IRoutingTable Map(HttpMethod method, string path, Func<HttpRequest, HttpResponse> resposeFunction);
+
         IRoutingTable MapGet(string path, HttpResponse respose);
+
+        IRoutingTable MapGet(string path, Func<HttpRequest, HttpResponse> resposeFunction);
+
+        IRoutingTable MapPost(string path, HttpResponse response);
+
+        IRoutingTable MapPost(string path, Func<HttpRequest, HttpResponse> resposeFunction);
     }
 }

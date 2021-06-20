@@ -12,7 +12,7 @@ namespace MyServer.Routing
     public class RoutingTable : IRoutingTable
     {
 
-        private readonly Dictionary<HttpMethod, Dictionary<string, HttpResponse>> routes;
+        private readonly Dictionary<HttpMethod, Dictionary<string, Func<HttpRequest, HttpResponse>>> routes;
 
         public RoutingTable() => this.routes = new()
         {
@@ -25,12 +25,19 @@ namespace MyServer.Routing
         public IRoutingTable Map(
             HttpMethod method, 
             string path, 
-            HttpResponse respose)
+            HttpResponse response)
+        {
+            Guard.AgainstNull(response, nameof(response));
+
+            return this.Map(method, path, request => response);
+        }
+
+        public IRoutingTable Map(HttpMethod method, string path, Func<HttpRequest, HttpResponse> resposeFunction)
         {
             Guard.AgainstNull(path, nameof(path));
-            Guard.AgainstNull(respose, nameof(respose));
+            Guard.AgainstNull(resposeFunction, nameof(resposeFunction));
 
-            this.routes[HttpMethod.Get][path] = respose;
+            this.routes[HttpMethod.Get][path] = resposeFunction;
 
             return this;
         }
@@ -38,13 +45,21 @@ namespace MyServer.Routing
         public IRoutingTable MapGet(
             string path,
             HttpResponse response)
-            => Map(HttpMethod.Get, path, response);
+            => MapGet(path, request => response);
+
+
+        public IRoutingTable MapGet(string path, Func<HttpRequest, HttpResponse> resposeFunction)
+            => Map(HttpMethod.Get, path, resposeFunction);
 
         public IRoutingTable MapPost(
             string path,
             HttpResponse response)
-            => Map(HttpMethod.Get, path, response);
+            => MapPost(path, request => response);
 
+        public IRoutingTable MapPost(
+            string path, 
+            Func<HttpRequest, HttpResponse> resposeFunction)
+            => Map(HttpMethod.Get, path, resposeFunction);
 
         public HttpResponse MatchRequest(HttpRequest request) 
         {
@@ -58,7 +73,9 @@ namespace MyServer.Routing
                 return new NotFoundResponse();
             }
 
-            return this.routes[requestMethod][requestUrl];
+            var responseFunc = this.routes[requestMethod][requestUrl];
+
+            return responseFunc(request);
         }
     }
 }
