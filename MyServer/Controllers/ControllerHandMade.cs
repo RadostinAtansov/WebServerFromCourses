@@ -2,6 +2,7 @@
 {
     using MyServer.Http;
     using MyServer.Responses;
+    using System.Runtime.CompilerServices;
 
     public abstract class ControllerHandMade
     {
@@ -18,6 +19,13 @@
             => new HtmlResponse(html);
 
         protected HttpResponse Redirect(string location)
-        => new RedirectResponse(location);
+            => new RedirectResponse(location);
+
+        protected HttpResponse View([CallerMemberName] string viewName = "")
+            => new ViewResponse(viewName, this.GetControllerName());
+
+        private string GetControllerName()
+            => this.GetType().Name.Replace(nameof(ControllerHandMade), string.Empty);
+
     }
 }

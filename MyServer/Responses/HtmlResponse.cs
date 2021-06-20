@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyServer.Responses
 {
+    using MyServer.Http;
+
     public class HtmlResponse : ContentResponse
     {
         public HtmlResponse(string text) 
-            : base(text, "text/html; charset=UTF-8")
+            : base(text, HttpContentTypes.Html)
         {
         }
     }

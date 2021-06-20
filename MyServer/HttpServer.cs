@@ -61,11 +61,12 @@ namespace MyServer
                 if (requestText.Length == 0)
                 {
                     conection.Close();
+                    return;
                 }
-
                 var request = HttpRequest.Parse(requestText);
 
                 var response = this.routingTable.MatchRequest(request);
+
 
                 await WriteResponse(networkStrem, response);
 
