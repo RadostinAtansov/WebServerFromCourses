@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyServer.Http
 {
-    public abstract class HttpRespose
+    public abstract class HttpResponse
     {
 
-        public HttpRespose(HttpStatusCode statusCode)
+        public HttpResponse(HttpStatusCode statusCode)
         {
             this.StatusCode = statusCode;
 

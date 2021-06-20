@@ -12,9 +12,11 @@ namespace MyServer.Http
 
         public HttpMethod Method { get; private set; }
 
-        public string Url { get; private set; }
+        public string Path { get; private set; }
 
-        public HttpHeaderCollection Headers { get; private set; } = new HttpHeaderCollection();
+        public Dictionary<string, string> Query;
+
+        public HttpHeaderCollection Headers { get; private set; }
 
         public string Body { get; private set; }
 
@@ -27,25 +29,51 @@ namespace MyServer.Http
             var method = ParseHttpMethod(startLine[0]);
             var url = startLine[1];
 
+            var (path, query) = ParseUrl(url);
+
+
             var headers = ParseHttpHeaders(lines.Skip(1));
 
             var bodyLine = lines.Skip(headers.Count + 2).ToArray();
 
-            var body = string.Join(string.Empty, bodyLine);
+            var body = string.Join(NewLine, bodyLine);
 
             return new HttpRequest
             {
                 Method = method,
-                Url = url,
+                Path = path,
+                Query = query,
                 Headers = headers,
                 Body = body
             };
 
         }
 
+        private static (string, Dictionary<string, string>) ParseUrl(string url)
+        {
+            var urlParths = url.Split('?');
+
+            var path = urlParths[0];
+
+            var query = urlParths.Length > 1
+                ? ParseQuery(urlParths[1])
+                : new Dictionary<string, string>();
+
+            return (path, query);
+        }
+
+        private static Dictionary<string, string> ParseQuery(string queryString)
+                => queryString
+                    .Split('&')
+                    .Select(part => part.Split('='))
+                    .Where(part => part.Length == 2)
+                    .ToDictionary(p => p[0], part => part[1]);
+
+
+
         private static HttpMethod ParseHttpMethod(string method)
         {
-            return method.ToLower() switch
+            return method.ToUpper() switch
             {
                 "GET" => HttpMethod.Get,
                 "POST" => HttpMethod.Post,
@@ -65,10 +93,10 @@ namespace MyServer.Http
                 {
                     break;
                 }
-
+                    
                 var headerParts = headerLine.Split(":", 2);
 
-                if (headerParts.Length != 2 )
+                if (headerParts.Length != 2)
                 {
                     throw new InvalidOperationException("Request is not valid");
                 }

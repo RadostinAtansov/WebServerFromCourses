@@ -15,12 +15,16 @@ namespace MyServer
         private readonly int port;
         private readonly TcpListener listener;
 
-        public HttpServer(string ipAddress, int port, Action<IRoutingTable> routingTable)
+        private readonly RoutingTable routingTable;
+
+        public HttpServer(string ipAddress, int port, Action<IRoutingTable> routingTableConfiguration)
         {
             this.ipAddress = IPAddress.Parse(ipAddress);
             this.port = port;
 
             listener = new TcpListener(this.ipAddress, port);
+
+            routingTableConfiguration(this.routingTable = new RoutingTable());
         }
 
         public HttpServer(int port, Action<IRoutingTable> routingTable) 
@@ -52,12 +56,11 @@ namespace MyServer
 
                 var requestText = await this.ReadRequest(networkStrem);
 
-                Console.WriteLine(requestText);
-
-
-                await WriteResponse(networkStrem);
-
                 var request = HttpRequest.Parse(requestText);
+
+                var response = this.routingTable.MatchRequest(request);
+
+                await WriteResponse(networkStrem, response);
 
                 conection.Close();
 
@@ -81,23 +84,9 @@ namespace MyServer
             return requestBuilder.ToString();
         }
 
-        private async Task WriteResponse(NetworkStream networkStream)
+        private async Task WriteResponse(NetworkStream networkStream, HttpResponse response)
         {
-
-            var contentBody = "asd!";
-
-            var contentLength = Encoding.UTF8.GetByteCount(contentBody);
-
-            var response = $@"
-HTTP/1.1 200 OK
-Server: My Web Server
-Date: {DateTime.UtcNow:r}
-Content-Length: {contentLength}
-Content-Type: text/plain; charset=UTF-8
-
-{contentBody}";
-
-            var responseBytes = Encoding.UTF8.GetBytes(response);
+            var responseBytes = Encoding.UTF8.GetBytes(response.ToString());
 
             await networkStream.WriteAsync(responseBytes);
         }

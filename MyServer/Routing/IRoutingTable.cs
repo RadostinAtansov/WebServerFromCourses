@@ -11,8 +11,8 @@ namespace MyServer.Routing
 
     public interface IRoutingTable
     {
-        IRoutingTable Map(string url, HttpMethod method, HttpRespose respose);
+        IRoutingTable Map(HttpMethod method, string path, HttpResponse respose);
 
-        IRoutingTable MapGet(string url, HttpRespose respose);
+        IRoutingTable MapGet(string path, HttpResponse respose);
     }
 }
