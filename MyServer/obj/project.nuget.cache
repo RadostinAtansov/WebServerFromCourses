@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fzevj/dqU7XtzX96cByVIMZK0UWq3p9yQHPSFca313ndEApOQZgQaH8PyMQTOTpLBrO7lVNTDgAZYTAMezwypw==",
+  "dgSpecHash": "kQC2773XJMwl1g7RNpzjUOUR730mV+ESKhxwnPr62Jku+uLTquIJpe7orae7KvcEf1F3AQi2jAZuEjG1JHyqkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\MyServer\\MyServer.csproj",
+  "projectFilePath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\MyServer\\MyServer.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

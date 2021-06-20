@@ -35,11 +35,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses.csproj",
+      "projectUniqueName": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses.csproj",
       "projectName": "WebServerFromCourses",
-      "projectPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses.csproj",
+      "projectPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses.csproj",
       "packagesPath": "C:\\Users\\hapa_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\obj\\",
+      "outputPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\WebServerFromCourses\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -63,8 +63,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\MyServer\\MyServer.csproj": {
-              "projectPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\MyServer\\MyServer.csproj"
+            "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\MyServer\\MyServer.csproj": {
+              "projectPath": "C:\\Users\\hapa_\\Desktop\\WebServerFromCourses\\WebServerFromCourses\\MyServer\\MyServer.csproj"
             }
           }
         }
