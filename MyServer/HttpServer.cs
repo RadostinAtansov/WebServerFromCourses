@@ -56,6 +56,11 @@ namespace MyServer
 
                 var requestText = await this.ReadRequest(networkStrem);
 
+                if (requestText.Length == 0)
+                {
+                    conection.Close();
+                }
+
                 var request = HttpRequest.Parse(requestText);
 
                 var response = this.routingTable.MatchRequest(request);

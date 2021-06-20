@@ -19,8 +19,14 @@ namespace MyServer.Routing
 
         IRoutingTable MapGet(string path, Func<HttpRequest, HttpResponse> resposeFunction);
 
+        IRoutingTable MapGet<TController>(string path, Func<TController, HttpResponse> controllerFunction)
+            where TController : ControllerHandMade;
+
         IRoutingTable MapPost(string path, HttpResponse response);
 
         IRoutingTable MapPost(string path, Func<HttpRequest, HttpResponse> resposeFunction);
+
+        IRoutingTable MapPost<TController>(string path, Func<TController, HttpResponse> controllerFunction)
+        where TController : ControllerHandMade;
     }
 }

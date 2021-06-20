@@ -51,7 +51,7 @@ namespace MyServer.Http
 
         private static (string, Dictionary<string, string>) ParseUrl(string url)
         {
-            var urlParths = url.Split('?');
+            var urlParths = url.Split('?', 2);
 
             var path = urlParths[0];
 
@@ -73,6 +73,7 @@ namespace MyServer.Http
 
         private static HttpMethod ParseHttpMethod(string method)
         {
+
             return method.ToUpper() switch
             {
                 "GET" => HttpMethod.Get,

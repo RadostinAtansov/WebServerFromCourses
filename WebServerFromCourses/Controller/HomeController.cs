@@ -1,13 +1,21 @@
 ﻿namespace WebServerFromCourses.Controller
 {
-
+    using MyServer;
     using MyServer.Http;
+    using MyServer.Responses;
 
-    public class HomeController
+    public class HomeController : ControllerHandMade
     {
-        public HttpResponse Index()
+
+        public HomeController(HttpRequest request) 
+            : base(request)
         {
-            return null;
+
         }
+
+        public HttpResponse Index()
+            =>  Text("Hello from Radul");
+
+
     }
 }
